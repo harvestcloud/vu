@@ -4,6 +4,6 @@ services:
     symfony:
         container_name: symfony
         build:
-            context: ./symfony
+            context: .
         volumes:
-            - ./symfony:/app
+            - .:/app
