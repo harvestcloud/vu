@@ -1,8 +1,8 @@
 version: '3.6'
 
 services:
-    symfony:
-        container_name: symfony
+    vu:
+        container_name: vu
         build:
             context: .
         volumes:
