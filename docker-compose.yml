@@ -7,3 +7,13 @@ services:
             context: .
         volumes:
             - .:/app
+        command: sh -c 'composer install --no-interaction --optimize-autoloader && php-fpm'
+
+    vu-nginx:
+        build:
+            dockerfile: ./docker/nginx/Dockerfile
+            context: .
+        depends_on:
+           - vu
+        ports:
+          - 80:80
