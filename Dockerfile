@@ -1,4 +1,4 @@
-FROM php:7.4.12-fpm-alpine AS dev
+FROM php:8.0.13-fpm-alpine3.14 AS dev
 ADD . /app
 WORKDIR /app
 RUN apk update
