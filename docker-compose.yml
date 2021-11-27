@@ -10,6 +10,7 @@ services:
         command: sh -c 'composer install --no-interaction --optimize-autoloader && php-fpm'
 
     vu-nginx:
+        container_name: vu-nginx
         build:
             dockerfile: ./docker/nginx/Dockerfile
             context: .
