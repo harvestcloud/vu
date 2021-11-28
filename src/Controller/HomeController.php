@@ -7,11 +7,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController
 {
-    /**
-     * @Route("/", name="app_home")
-     */
+    #[Route('/', name: 'app_home')]
     public function __invoke(): Response
     {
-        return new Response('Hello');
+        return new Response('Hello, attributes!');
     }
 }
