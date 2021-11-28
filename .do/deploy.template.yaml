@@ -1,34 +1,37 @@
-spec:
-  alerts:
-  - rule: DEPLOYMENT_FAILED
-  - rule: DOMAIN_FAILED
-  envs:
-  - key: APP_ENV
-    scope: RUN_AND_BUILD_TIME
-    value: prod
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+domains:
+- domain: vu.harvestcloud.com
+  type: PRIMARY
+  zone: harvestcloud.com
+envs:
+- key: APP_ENV
+  scope: RUN_AND_BUILD_TIME
+  value: prod
+name: vu
+region: nyc
+services:
+- dockerfile_path: Dockerfile
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: harvestcloud/vu
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  internal_ports:
+  - 9000
   name: vu
-  region: nyc
-  services:
-  - dockerfile_path: Dockerfile
-    github:
-      branch: main
-      deploy_on_push: true
-      repo: harvestcloud/vu
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    internal_ports:
-    - 9000
-    name: vu
-    source_dir: /
-  - dockerfile_path: /docker/nginx/Dockerfile
-    github:
-      branch: main
-      deploy_on_push: true
-      repo: harvestcloud/vu
-    http_port: 80
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    name: vu-nginx
-    routes:
-    - path: /
-    source_dir: /
+  source_dir: /
+- dockerfile_path: /docker/nginx/Dockerfile
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: harvestcloud/vu
+  http_port: 80
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: vu-nginx
+  routes:
+  - path: /
+  source_dir: /
